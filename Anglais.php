@@ -2,7 +2,7 @@
 
 <?php
 
-// use foo\utile;
+// 
 if (isset($_COOKIE['nbVisite'])) {
     setcookie("nbVisite", $_COOKIE['nbVisite'] + 1, time() + 3600);
 } else {
@@ -83,15 +83,14 @@ background-color: #ffffff;
 
   <?php
 
- //  var_dump($_GET); 
-//var_dump($_POST['traductionFrançais']); 
-$filename = '/var/www/html/app/english/dico.txt';
-include ('/var/www/html/app/english/utile.php');
+ 
+$filename = 'english/dico.txt';
+include ('english/utile.php');
 
 if (file_exists($filename)) {
 
     $fileContentArray = getFileContentInArray($filename);
-    include ('/var/www/html/app/english/WhatActionForm.html');
+    include ('english/WhatActionForm.html');
     if (isAddingAction()) {
 
         if (isAddingPostAction()) {
@@ -103,20 +102,20 @@ if (file_exists($filename)) {
             ecrireMotEtTrad($filename, $motEtTrad);
         } else {
 
-            include ('/var/www/html/app/english/form.html');
+            include ('english/form.html');
         }
     } else if (isReadingAction()) {
 
-        include ('/var/www/html/app/english/list.phtml');
+        include ('english/list.phtml');
         
     } else if (isPlayEvaluerAction()) {
         
-        include ('/var/www/html/app/english/jouerEvaluer.php');
+        include ('english/jouerEvaluer.php');
         
         
       } else if (isPlayAction()) {
 
-        include ('/var/www/html/app/english/jouer.php');
+        include ('english/jouer.php');
         //
     }
 } else {
