@@ -1,0 +1,29 @@
+
+<h1> Liste des mots </h1>
+
+<div style="text-align:center;">
+  <table style="width: 80%;">
+    <thead>
+        <tr>
+            <th class ="en"style=" height: 50px;"> Mots Anglais</th>
+            <th class ="fr" style=" height: 50px;">Traduction Française</th>
+        </tr>
+    </thead>
+    <tbody>
+     
+      <?php $i=0;  foreach( $fileContentArray as $word){  ?>
+        <tr>
+            <td class ="en list-mots-row "id="<?php echo "englishWord-".$i ?>"><?php echo $word['en']; ?></td>
+            <td class ="fr list-mots-row " id="<?php echo "frenchWord-".$i ?>"><?php echo $word['fr']; ?></td>
+        </tr>
+       <?php $i++;} ?>
+    </tbody>
+  </table>
+<div>
+
+<?php
+ 
+ ?>
+
+<script>
+</script>

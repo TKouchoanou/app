@@ -1,0 +1,54 @@
+<form method="post" id="add-form" action="" onsubmit="return checkForm(this)" oninput="onChange(this)">
+   <p>
+       <label for="motAnglais">*Mot en Anglais :</label>
+       <input type="text" name="motAnglais" id="motAnglais" onblur=""  required/>
+       
+       <br/>
+       <label for="traductionEnFrançais">*Traduction En Français :</label>
+       <input type="text" name="traductionEnFrançais" id="traductionEnFrançais" required/>      
+   </p>
+      <input type="submit" id="add-form-submit" class="submit" value="Envoyer" />
+</form>
+
+<script>
+function checkForm(f){
+  
+  var addForm=document.getElementById("add-form");
+  for (let i = 0; i < words.length; i++) {
+  let word= words[i]; 
+     if(f.motAnglais.value.trim()===word.en && f.traductionEnFrançais.value.trim()===word.fr){
+
+         if(document.getElementById("add-form-error-message")===null){  
+             let newP = document.createElement('p');
+             let submit=document.getElementById("add-form-submit"); 
+             let oldClass=submit.getAttribute("class");
+             newP.setAttribute("id", "add-form-error-message");
+             newP.setAttribute("class", "error-message");
+             newP.textContent ="* '"+f.motAnglais.value+"' avec la traduction : '"+f.traductionEnFrançais.value+"' existe déjà dans votre dico Veillez changer le mot à traduire où rajouter une autre traduction"; 
+             submit.setAttribute("class",oldClass+" error");
+             f.append(newP); 
+            
+        
+         }
+         return false; 
+      }  
+   }
+  
+   return true; 
+}
+
+
+  function onChange(f){
+       let errorMsg=document.getElementById("add-form-error-message"); 
+       let submit=document.getElementById("add-form-submit"); 
+       let oldSubmitClass=submit.getAttribute("class");
+      submit.setAttribute("class",oldSubmitClass.replace(' error',''));
+
+     if(errorMsg!==null){
+         f.removeChild(errorMsg);
+      }  
+  
+    }
+
+
+</script>
